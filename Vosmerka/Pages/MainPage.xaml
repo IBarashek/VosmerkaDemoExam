@@ -7,7 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainPage">
-
+<Page.Resources>
+    <Style TargetType="ListViewItem">
+        <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
+    </Style>
+</Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -15,22 +19,22 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <TextBox x:Name="TxbSearch" Text="Введите для поиска"/>
-            <ComboBox x:Name="CmbSort" />
-            <ComboBox x:Name="CmbFilter"/>
+            <ComboBox x:Name="CmbSort" SelectionChanged="CmbSort_SelectionChanged" />
+            <ComboBox x:Name="CmbFilter" SelectedItem="Все типы" SelectionChanged="CmbFilter_SelectionChanged"/>
         </StackPanel>
         <ListView Grid.Row="1" >
             <ListView.ItemTemplate >
-                <DataTemplate >
+                <DataTemplate>
                     
                     <StackPanel Orientation="Horizontal">
-                        <Image x:Name="ImgProduct"/>
+                        <Image x:Name="ImgProduct" Source="{Binding Image}"/>
                         <StackPanel>
-                            <TextBlock x:Name="TxtTypeProduct"/>
-                            <TextBlock x:Name="TxtNameProduct"/>
-                            <TextBlock x:Name="TxtArticle"/>
-                            <TextBlock x:Name="TxtMaterial"/>
+                            <TextBlock x:Name="TxtTypeProduct" Text="{Binding Product_Type.Name}"/>
+                            <TextBlock x:Name="TxtNameProduct" Text="{Binding Name}"/>
+                            <TextBlock x:Name="TxtArticle" Text="{Binding Article}"/>
+                            <TextBlock x:Name="TxtMaterial" Text="{Binding Material.Name}"/>
                         </StackPanel>
-                        <TextBlock x:Name="TxtCost"/>
+                        <TextBlock x:Name="TxtCost" Text="{Binding MinPrice}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

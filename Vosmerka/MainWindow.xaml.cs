@@ -23,6 +23,7 @@ namespace Vosmerka
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.NavigationService.Navigate(new Pages.MainPage());
         }
     }
 }
