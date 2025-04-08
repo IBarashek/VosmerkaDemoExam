@@ -11,7 +11,7 @@ namespace Vosmerka.Classes
     class ProductClass:Product
     {
 
-        public static void CreateProduct(int article, string name, int minPrice, int id_PT, string size, double w_WitB, double w_WithoutD, byte[] imageProduct, string description)
+        public static void CreateProduct(int article, string name, int minPrice, int id_PT, string size, double w_WitB, double w_WithoutD, string description)
         {
             ConnectionClass connection = new ConnectionClass();
            
@@ -24,7 +24,7 @@ namespace Vosmerka.Classes
                 Size = size,
                 Weight_WithBox = w_WitB,
                 Weight_WithoutBox = w_WithoutD,
-                Image = imageProduct,
+                //Image = imageProduct,
                 Description = description
             };
 

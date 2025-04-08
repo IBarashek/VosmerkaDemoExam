@@ -7,25 +7,26 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainPage">
-<Page.Resources>
-    <Style TargetType="ListViewItem">
-        <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
-    </Style>
-</Page.Resources>
+    <Page.Resources>
+        <Style TargetType="ListViewItem">
+            <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <TextBox x:Name="TxbSearch" Text="Введите для поиска"/>
+            <TextBox x:Name="TxbSearch" TextChanged="SearchNameDesc"/>
             <ComboBox x:Name="CmbSort" SelectionChanged="CmbSort_SelectionChanged" />
             <ComboBox x:Name="CmbFilter" SelectedItem="Все типы" SelectionChanged="CmbFilter_SelectionChanged"/>
         </StackPanel>
-        <ListView Grid.Row="1" >
+        <ListView x:Name="LstProducts" Grid.Row="1" >
             <ListView.ItemTemplate >
                 <DataTemplate>
-                    
+
                     <StackPanel Orientation="Horizontal">
                         <Image x:Name="ImgProduct" Source="{Binding Image}"/>
                         <StackPanel>
@@ -39,5 +40,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button x:Name="BtnCreate" Content="Добавить" Click="Create_Click"/>
+            <Button x:Name="BtnUpdate" Content="Изменить" Click="Update_Click"/>
+            <StackPanel x:Name="StpNavigationList"/>
+        </StackPanel>
     </Grid>
 </Page>
